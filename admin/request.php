@@ -81,7 +81,25 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         <?php
         if (isset($_GET['error'])) {
           $error = urldecode($_GET['error']);
-          echo "<div class='alert alert-danger'>$error</div>";
+          echo '<div id="error-container"></div>';
+
+  // JavaScript to add the error message and remove it after 5 seconds
+          echo '<script>
+          document.addEventListener("DOMContentLoaded", function() {
+          var errorContainer = document.getElementById("error-container");
+          var errorMessage = document.createElement("div");
+          errorMessage.className = "alert alert-danger";
+          errorMessage.textContent = "' . $error . '";
+          errorContainer.appendChild(errorMessage);
+
+          setTimeout(function() {
+            errorMessage.remove();
+            var url = window.location.href;
+            var updatedUrl = url.split("?")[0]; // Remove the query parameters from the URL
+            history.replaceState(null, "", updatedUrl); // Update the URL without the error parameter
+          }, 5000); // 5000 milliseconds = 5 seconds
+          });
+          </script>';
         }
         ?>
         <div class="table-responsive">

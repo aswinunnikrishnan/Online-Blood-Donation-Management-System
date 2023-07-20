@@ -1,3 +1,4 @@
+
 <?php
 
 include 'connection.php';
@@ -15,9 +16,10 @@ if (mysqli_num_rows($result) > 0) {
     echo '<td>' . $row['hospital'] . '</td>';
     echo '<td>' . ($row['priority'] == 1 ? 'high' : 'low') . '</td>';
     if ($row['request_status'] == 'pending') {
+      $blood_group = base64_encode($row['blood_group']);
       echo '<td id="he" style="width:100px">';
-      echo '<button type="button" class="btn btn-primary btn-sm btn-success" onclick="approveRequest(' . $row['id'] . ', ' . $row['units'] . ', \'' . $row['blood_group'] . '\');">APPROVE</button>';
-      echo '<button type="button" class="btn btn-primary btn-sm btn-danger" onclick="rejectRequest(' . $row['id'] . ');">REJECT</button>';
+      echo '<button type="button" class="btn btn-primary btn-sm btn-success" onclick="approverequest(' . $row['id'] . ', ' . $row['units'] . ', \'' .$blood_group. '\');">APPROVE</button>';
+      echo '<button type="button" class="btn btn-primary btn-sm btn-danger" onclick="rejectrequest(' . $row['id'] . ');">REJECT</button>';
       echo '</td>';
     } elseif ($row['request_status'] == 'approved') {
       echo '<td id="btn-text">';
@@ -33,6 +35,15 @@ if (mysqli_num_rows($result) > 0) {
 } else {
   echo '<tr><td colspan="6">No requests found.</td></tr>';
 }
-
 mysqli_close($connection);
 ?>
+<script>
+  function approverequest(id, units, blood_group) {
+    // Construct the URL with the parameters and redirect to approveRequest.php
+
+    window.location.href = 'approve.php?id=' + id + '&units=' + units + '&blood_group=' + blood_group;
+  }
+  function rejectrequest(id){
+    window.location.href = 'reject.php?id=' + id;
+  }
+</script>

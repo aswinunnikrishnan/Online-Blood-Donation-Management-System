@@ -3,7 +3,7 @@ include 'connection.php';
 
 $id = $_GET['id'];
 $units_req = $_GET['units'];
-$bld = urlencode($_GET['bldgrp']);
+$bld = base64_decode($_GET['blood_group']);
 $sql = "SELECT * FROM blood_units WHERE blood_group ='{$bld}'";
 $result = mysqli_query($connection,$sql);
 $row=mysqli_fetch_assoc($result);

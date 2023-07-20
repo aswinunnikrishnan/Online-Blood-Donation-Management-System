@@ -112,7 +112,7 @@ include 'sidebar.php'; ?>
                       $sql2 ="SELECT * from blood_units WHERE blood_group='B+'";
                       $result2=mysqli_query($connection,$sql2) or die("query failed.");
                       $row2=mysqli_fetch_assoc($result2);
-                      $units2 = $row['units'];
+                      $units2 = $row2['units'];
                     ?>
                     <div class="stat-panel-number h3"><?php echo $units2?></div>
               </div>
