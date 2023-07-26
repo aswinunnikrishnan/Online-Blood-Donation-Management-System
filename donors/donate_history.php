@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>Donor List</title>
+  <title>Donation History</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -45,7 +45,7 @@ include 'connection.php';
 ?>
 </div>
 <div id="sidebar">
-<?php $active="donor_list"; include 'sidebar.php'; ?>
+<?php $active="donate_history"; include 'sidebar.php'; ?>
 
 </div>
 <div id="content" >
@@ -54,7 +54,7 @@ include 'connection.php';
       <div class="row">
         <div class="col-md-12 lg-12 sm-12">
 
-          <h1 class="page-title">Approved Donor List</h1>
+          <h1 class="page-title">Donation History</h1>
 
         </div>
 
@@ -63,9 +63,13 @@ include 'connection.php';
       <?php
         include 'connection.php';
 
-        
+        $username=$_SESSION['username'];
+        $sql1="select * from users where username='$username'";
+        $result1=mysqli_query($connection,$sql1) or die("query failed.");
+        $row1=mysqli_fetch_assoc($result1);
+        $name = $row1['name'];
         $count=1;
-        $sql= "select * from donor_details ";
+        $sql= "select * from donor_details where name='$name'";
         $result=mysqli_query($connection,$sql);
         if(mysqli_num_rows($result)>0)   {
        ?>
@@ -73,32 +77,20 @@ include 'connection.php';
        <div class="table-responsive">
       <table class="table table-bordered" style="text-align:center">
           <thead style="text-align:center">
-          <th style="text-align:center">S.NO</th>
-          <th style="text-align:center">NAME</th>
-          <th style="text-align:center">PHONE</th>
-          <th style="text-align:center">EMAIL</th>
-          <th style="text-align:center">AGE</th>
-          <th style="text-align:center">GENDER</th>
-          <th style="text-align:center">BLOOD GROUP</th>
-          <th style="text-align:center">ADDRESS</th>
-          <th style="text-align:center">ACTION</th>
+          <th style="text-align:center;width:10px;">S.NO</th>
+          <th style="text-align:center;width:5px;">DATE</th>
+          <th style="text-align:center;width:5px;">STATUS</th>
           </thead>
           <tbody>
             <?php
             while($row = mysqli_fetch_assoc($result)) { ?>
           <tr>
-                  <td><?php echo $count++; ?></td>
-                  <td><?php echo $row['name']; ?></td>
-                  <td><?php echo $row['mobile']; ?></td>
-                  <td><?php echo $row['mail_id']; ?></td>
-                  <td><?php echo $row['age']; ?></td>
-                  <td><?php echo $row['gender']; ?></td>
-                    <td><?php echo $row['blood_group']; ?></td>
-                    <td><?php echo $row['address']; ?></td>
-                    <td id="he" style="width:100px">
-                    <button type="button" class="btn btn-primary btn-sm btn-danger" onclick="window.location.href = 'delete.php?id=<?php echo $row['id']; ?>';" >DELETE</button>
-                    </td>
-              </tr>
+              <td><?php echo $count++; ?></td>
+              <td><?php echo $row['date']; ?></td>
+              <td id="he" style="width:5px">
+              <button type="button" class="btn btn-primary btn-sm btn-success" disabled>SUCCESS</button>
+              </td>                       
+            </tr>
             <?php } ?>
           </tbody>
       </table>
@@ -116,9 +108,9 @@ include 'connection.php';
 </div>
 <?php }
    else {
-       echo '<div class="alert alert-danger"><b> Please Login First To Access Admin Portal.</b></div>';
+       echo '<div class="alert alert-danger"><b> Please Login First To Access Portal.</b></div>';
        ?>
-       <form method="post" name="" action="login.php" class="form-horizontal">
+       <form method="post" name="" action="login_register.php" class="form-horizontal">
          <div class="form-group">
            <div class="col-sm-8 col-sm-offset-4" style="float:left">
 

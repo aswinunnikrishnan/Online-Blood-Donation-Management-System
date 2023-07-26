@@ -45,7 +45,7 @@ include 'connection.php';
 ?>
 </div>
 <div id="sidebar">
-<?php $active="donor_list"; include 'sidebar.php'; ?>
+<?php $active="donorpend"; include 'sidebar.php'; ?>
 
 </div>
 <div id="content" >
@@ -54,7 +54,7 @@ include 'connection.php';
       <div class="row">
         <div class="col-md-12 lg-12 sm-12">
 
-          <h1 class="page-title">Approved Donor List</h1>
+          <h1 class="page-title">Pending Donor List</h1>
 
         </div>
 
@@ -65,7 +65,7 @@ include 'connection.php';
 
         
         $count=1;
-        $sql= "select * from donor_details ";
+        $sql= "select * from donors_pending where status='pending'";
         $result=mysqli_query($connection,$sql);
         if(mysqli_num_rows($result)>0)   {
        ?>
@@ -95,10 +95,12 @@ include 'connection.php';
                   <td><?php echo $row['gender']; ?></td>
                     <td><?php echo $row['blood_group']; ?></td>
                     <td><?php echo $row['address']; ?></td>
-                    <td id="he" style="width:100px">
-                    <button type="button" class="btn btn-primary btn-sm btn-danger" onclick="window.location.href = 'delete.php?id=<?php echo $row['id']; ?>';" >DELETE</button>
+                    <td id="btn-text">
+                    <button class="btn btn-primary btn-sm btn-success" onclick="window.location.href = 'approve_donor.php?id=<?php echo $row['id']; ?>';">APPROVE</button>
+                    <button class="btn btn-primary btn-sm btn-danger" onclick="window.location.href = 'reject_donor.php?id=<?php echo $row['id']; ?>';">REJECT</button>
                     </td>
-              </tr>
+
+           </tr>
             <?php } ?>
           </tbody>
       </table>

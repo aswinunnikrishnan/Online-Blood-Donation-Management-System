@@ -27,7 +27,7 @@
           <a href="home.php"  <?php if($active=='home') echo "class='nav-link active'" ; else echo "class='nav-link'";?>>Home</a>
         </li>
         <li class="nav-item">
-          <a href="donate_regform.php"  <?php if($active=='donate') echo "class='nav-link active'" ; else echo "class='nav-link'";?>>Donate Blood</a>
+          <a class="nav-link" href="donors/login_register.php">Donate Blood</a>
         </li>
         <li class="nav-item">
           <a href="why_donate.php"  <?php if($active=='why_donate') echo "class='nav-link active'" ; else echo "class='nav-link'";?>>Learn Why?</a>

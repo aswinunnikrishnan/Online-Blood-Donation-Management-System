@@ -1,18 +1,17 @@
 <html>
 <head>
   <title>Donate Blood</title>
-  <!-- Add Bootstrap CSS CDN link -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: rgb(255, 255, 255);
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-    
-    .form-container {
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style>
+    #sidebar{
+  position:fixed;
+  margin-top:-20px;
+}
+#content{
+  position:relative;
+  margin-left:210px;
+}
+.form-container {
       background-color: #fff;
       border-radius: 10px;
       padding: 40px;
@@ -60,6 +59,16 @@
       outline: none;
     }
     
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      font-weight: bold;
+    }
+    
+    
     .form-group input.invalid,
     .form-group select.invalid {
       border: 2px solid #dc3545;
@@ -76,25 +85,16 @@
       margin-top: 5px;
       display: none;
     }
-    
-    .success-popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #28a745;
-      color: #fff;
-      padding: 40px;
-      border-radius: 5px;
-      animation: fadeIn 0.5s ease;
-      display: none;
+    input:disabled {
+      background-color: #d6d3d3;
+      color: rgb(0, 0, 0);
     }
-    
-    .success-popup p {
-      margin: 0;
+    select:disabled {
+      background-color: #d6d3d3;
+      color: rgb(0, 0, 0);
     }
     .overlay-container {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -149,21 +149,51 @@
     .disclaimer button:focus {
       outline: none;
     }
-  </style>
+</style>
 </head>
 <body>
-<div>
-<?php $active ='donate';
-include 'head.php'; ?></div>
+<?php
+include 'connection.php';
+  include 'session.php';
+  if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    $user_name = $_SESSION['username'];
+    $query = "SELECT * FROM users WHERE username = '{$user_name}'";
+    $result = mysqli_query($connection, $query);
 
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $name = $row['name'];
+        $userphone = $row['phone'];
+        $useremail = $row['mail_id'];
+        $usergender = $row['gender'];
+        $userblood = $row['blood_group'];
+    }
+  ?>
+<body style="color:black">
+<div id="header">
+<?php include 'header.php';
+?>
+</div>
+<div id="sidebar">
+<?php $active="donate_blood"; include 'sidebar.php'; ?>
+
+</div>
+    <br><br>
   <center><div class="form-container">
-    <h2>Donate Blood</h2>
-    <form id="bloodDonationForm" action="savedonor.php" method="post">
-      <div class="form-group">
+
+    <h2>Donate Form</h2><br><br>
+    <form id="bloodDonationForm" action="donate_req.php" method="post">
+    <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" placeholder="Enter your name " required >
         <div class="error-message" id="nameError">Name must contain only letters and be at least 6 characters long.</div>
       </div>
+      <input type="hidden" id="hiddenname" name="hiddenname" value="<?php echo $name; ?>">
+      <input type="hidden" id="hiddenemail" name="hiddenemail" value="<?php echo $useremail; ?>">
+      <input type="hidden" id="hiddenphone" name="hiddenphone" value="<?php echo $userphone; ?>">
+      <input type="hidden" id="hiddengender" name="hiddengender" value="<?php echo $usergender; ?>">
+      <input type="hidden" id="hiddenblood" name="hiddenblood" value="<?php echo $userblood; ?>">
+
       <div class="form-group">
         <label for="age">Age:</label>
         <input type="number" id="age" name="age" placeholder="Enter your age " required>
@@ -247,12 +277,8 @@ include 'head.php'; ?></div>
         <input type="submit" value="Submit" name="submit" >
       </div>
     </form>
-    <div id="successPopup" class="success-popup">
-        <p>Registered Successfully!</p>
-        <p>Please visit our nearest collection center with your ID proof</p>
-      </div><center>
-   
-    <div class="overlay-container" id="disclaimerContainer">
+<center>
+<div class="overlay-container" id="disclaimerContainer">
     <div class="disclaimer">
       <h2>Terms And Conditions</h2>
       <p>Before placing request , please read and acknowledge the following terms and conditions:</p>
@@ -274,14 +300,45 @@ include 'head.php'; ?></div>
       <button onclick="acceptDisclaimer()">Continue</button>
       <br><br><p id="checkfail" style="color:rgb(255,0,0)"></p>
     </div>
-  </div>  
-<?php
-
-include('footer.php')
-?>
-  <!-- Add Bootstrap JS CDN link -->
+  </div>
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const nameinput = document.getElementById('name');
+    const phoneinput = document.getElementById('phone');
+    const emailinput = document.getElementById('email');
+    const genderinput = document.getElementById('gender');
+    const bloodinput = document.getElementById('bloodGroup');
+
+    if (typeof <?php echo json_encode($name); ?> !== "undefined") {
+        nameinput.value = <?php echo json_encode($name); ?>;
+        nameinput.disabled = true;
+        nameinput.classList.add('disabled-input');
+    }
+
+    if (typeof <?php echo json_encode($userphone); ?> !== "undefined") {
+        phoneinput.value = <?php echo json_encode($userphone); ?>;
+        phoneinput.disabled = true;
+        phoneinput.classList.add('disabled-input');
+    }
+
+    if (typeof <?php echo json_encode($useremail); ?> !== "undefined") {
+        emailinput.value = <?php echo json_encode($useremail); ?>;
+        emailinput.disabled = true;
+        emailinput.classList.add('disabled-input');
+    }
+    if (typeof <?php echo json_encode($usergender); ?> !== "undefined") {
+        genderinput.value = <?php echo json_encode($usergender); ?>;
+        genderinput.disabled = true;
+        genderinput.classList.add('disabled-select');
+    }
+    if (typeof <?php echo json_encode($userblood); ?> !== "undefined") {
+        bloodinput.value = <?php echo json_encode($userblood); ?>;
+        bloodinput.disabled = true;
+        bloodinput.classList.add('disabled-select');
+    }
+  });
     function showDisclaimer() {
       const disclaimerContainer = document.getElementById('disclaimerContainer');
       disclaimerContainer.style.display = 'flex';
@@ -297,7 +354,12 @@ include('footer.php')
         document.getElementById("checkfail").innerHTML = "<b>Please select the checkbox to continue</b>"
       }
     }
-    window.onload = showDisclaimer;
+  
+    // Show the form
+    function showForm() {
+      const formContainer = document.querySelector('.form-container');
+      formContainer.style.display = 'block';
+    }
     // Form validation
     function validateForm() {
 
@@ -366,12 +428,56 @@ include('footer.php')
     }
     
     
+    function submitForm() {
+      const form = document.getElementById('bloodDonationForm');
+      const formData = new FormData(form);
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'donate_req.php', true);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // Show the success message after successful form submission
+          const successMessage = "<div class='alert alert-success'>Form submitted successfully!<br>Please visit our nearest collection center with your ID proof.</div>";
+          const formContainer = document.querySelector('.form-container');
+          formContainer.innerHTML = successMessage;
+          setTimeout(function () {
+            formContainer.style.display = 'none';
+          },500000);
+        }
+      };
+      xhr.send(formData);
+    }
+
     // Event listener for form submission
     const form = document.getElementById('bloodDonationForm');
-    form.addEventListener('input', validateForm);// Add event listener for form validation
-  
+    form.addEventListener('input', validateForm);
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (validateForm()) {
+        submitForm();
+      }
+    });
+    window.onload = showDisclaimer;
+
   
   </script>
- 
+   
+      <?php }
+   else {
+       echo '<div class="alert alert-danger"><b> Please Login First To Access Portal.</b></div>';
+       ?>
+       <form method="post" name="" action="login_register.php" class="form-horizontal">
+         <div class="form-group">
+           <div class="col-sm-8 col-sm-offset-4" style="float:left">
+
+             <button class="btn btn-primary" name="submit" type="submit">Go to Login Page</button>
+           </div>
+         </div>
+       </form>
+   <?php }
+
+    ?>
+     
 </body>
 </html>
+

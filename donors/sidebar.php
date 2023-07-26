@@ -36,13 +36,9 @@
   <div class="sidebar">
     <ul class="nav">
       <li><a href="dashboard.php" <?php if($active=='dashboard') echo "class='active'" ;?>>Dashboard</a></li>
-      <li><a href="donorpend.php" <?php if($active=='donorpend') echo "class='active'" ;?>>Pending Donor List</a></li>
-      <li><a href="donor_list.php" <?php if($active=='donor_list') echo "class='active'" ;?>>Approved Donor List</a></li>
-      <li><a href="query.php" <?php if($active=='contact') echo "class='active'" ;?>>Queries</a></li>
-      <li><a href="request.php"<?php if($active=='request') echo "class='active'" ;?>>Blood Requests</a></li>
-      <li><a href="blood_status.php"<?php if($active=='blood_status') echo "class='active'" ;?>>Blood Bank Status</a></li>
-      <li><a href="hospital_query.php"<?php if($active=='hospital_query') echo "class='active'" ;?>>Hospital Queries</a></li>
-
+      <li><a href="donate_regform.php" <?php if($active=='donate_blood') echo "class='active'" ;?>>Donate Blood</a></li>
+      <li><a href="donate_status.php" <?php if($active=='donate_status') echo "class='active'" ;?>>Donate Status</a></li>
+      <li><a href="donate_history.php" <?php if($active=='donate_history') echo "class='active'" ;?>>Donate History</a></li>
     </ul>
   </div>
   

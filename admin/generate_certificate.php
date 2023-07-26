@@ -1,56 +1,54 @@
 <?php
-require_once('tcpdf/tcpdf.php');
+require_once('resources/tcpdf/tcpdf.php');
+require_once('resources/fpdf/fpdf.php');
+require_once('resources/vendor/autoload.php');
 
+use setasign\Fpdi\Fpdi;
 if (isset($_GET['name'])) {
     $name = $_GET['name'];
+    $id = $_GET['id'];
 
 } else {
-    echo "Name parameter not found.";
+    echo "Name or ID parameter not found.";
 }
-$html = file_get_contents('certificate_template.html');
-$currentDate = date('F d,Y');
-$html = str_replace('{{NAME}}', $name, $html); 
-$html = str_replace('{{DATE}}', $currentDate, $html);
+$date = date('F d,Y');
 
-// Create new TCPDF instance
-$pdf = new TCPDF('L', 'mm', 'A4', true, 'UTF-8', false);
-$pdf->SetFont('brushscriptmtkursiv','',14,'',true);
-// Set document properties
-$pdf->SetCreator('BDMS');
-$pdf->SetAuthor('BDMS');
-$pdf->SetTitle('Certificate');
-$pdf->SetSubject('Certificate');
-$pdf->SetKeywords('Certificate, BDMS');
+$pdf = new Fpdi();
 
-// Set default header and footer data
-$pdf->SetHeaderData('', 0, '', '', array(0,0,0), array(255,255,255));
-$pdf->setFooterData(array(0,0,0), array(255,255,255));
+// Set the existing PDF certificate template file
+$templateFile = 'ct.pdf';
 
-// Set default monospaced font
-$pdf->SetDefaultMonospacedFont('courier');
+// Import the template page
+$pageCount = $pdf->setSourceFile($templateFile);
+$templatePage = $pdf->importPage(1);
 
-// Set margins
-$pdf->SetMargins(10, 10, 10);
+// Set the size of the imported template page
+$size = $pdf->getTemplateSize($templatePage);
+$width = $size['width'];
+$height = $size['height'];
 
-// Set auto page breaks
-$pdf->SetAutoPageBreak(TRUE, 10);
+// Add a new page with the same size as the template
+$pdf->AddPage('L', array($width, $height));
+$pdf->useTemplate($templatePage);
 
-// Set image scale factor
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+// Set the font, font size, and position for the name
+$pdf->AddFont('brushscript', '', 'brushscript.php');
+$pdf->SetFont('brushscript','', 42);
+$pdf->SetTextColor(0, 0, 0);
+$pdf->SetXY(1, 120);
+$pdf->Cell(0, 0, $name, 0, 1, 'C');
 
-// Add a page
-$pdf->AddPage();
+// Set the font, font size, and position for the date
+$pdf->SetFont('Arial', 'B', 16);
+$pdf->SetTextColor(0, 0, 0);
+$pdf->SetXY(60, 170);
+$pdf->Cell(0, 0, $date, 0, 1, 'L');
 
-// Write the HTML content
-$pdf->writeHTML($html, true, false, true, false, '');
-
-
-// Set the path to save the certificate
-
-$filename = $_GET['name'] . '_' . date('Y-m-d_H-i-s') . '.pdf';
+$filename = $_GET['name'] . '_' . $_GET['id'] . '.pdf';
 
 // Save the certificate file on the server
-$pdf->Output($_SERVER['DOCUMENT_ROOT'] . '/BDMS/certificates/' . $filename, 'F');
-header("Location: success_download_certificate.php?filename=" . urlencode($filename));
+$pdf->Output($_SERVER['DOCUMENT_ROOT'] . '/admin/certificates/' . $filename, 'F');
+header("Location: donorpend.php");
 exit;
+
 ?>
