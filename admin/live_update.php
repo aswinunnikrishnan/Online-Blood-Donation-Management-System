@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Request Blood</title>
+  <title>News Update</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -72,6 +72,9 @@
       padding: auto;
       width: auto;
     }
+    .form-container textarea {
+      max-width: 100%;
+    }
   }
 </style>
 </head>
@@ -87,53 +90,54 @@ include 'connection.php';
 ?>
 </div>
 <div id="sidebar">
-<?php $active="request_blood"; include 'sidebar.php'; ?>
+<?php $active="live"; include 'sidebar.php'; ?>
 
 </div>
     <br><br>
+    <?php
+
+    // Check if the database connection was successful
+    if (!$connection) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    // Fetch the current content from the database
+    $sql = "SELECT content FROM news_updates WHERE id = 1"; 
+    $result = mysqli_query($connection, $sql);
+
+    // Check if the query was successful
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $currentcontent = $row["content"];
+    } else {
+        $currentcontent = "No latest news are currently available!";
+    }
+
+    // Close the database connection
+    mysqli_close($connection);
+    ?>
   <center><div class="form-container">
-  <?php
+     <?php
     if (session_status() === PHP_SESSION_NONE)
     {
         session_start();
     }
-    if (isset($_SESSION['success_message'])) 
+    if (isset($_SESSION['message'])) 
     {
-        $msg = $_SESSION['success_message'];
-        unset($_SESSION['success_message']); // Clear the session variable
+        $msg = $_SESSION['message'];
+        unset($_SESSION['message']); // Clear the session variable
         echo "<div class='alert alert-success'>$msg</div>";
     }
-  ?>
-    <h2>Request Blood</h2><br><br>
-    <form id="bloodrequestForm" action="request.php" method="post">
+    ?>
+    <h2>Update Live News</h2><br><br>
+    <form id="liveupdate" action="update_news.php" method="post">
       <div class="form-group">
-        <label for="bloodGroup">Blood Group:</label>
-        <select  id="bloodGroup" name="bloodGroup" required>
-          <option value="" disabled selected>Select Blood Group</option>
-          <option value="A+">A+</option>
-          <option value="A-">A-</option>
-          <option value="B+">B+</option>
-          <option value="B-">B-</option>
-          <option value="AB+">AB+</option>
-          <option value="AB-">AB-</option>
-          <option value="O+">O+</option>
-          <option value="O-">O-</option>
-        </select>
+        <label for="content">News Content:</label><br> 
+        <textarea name="content" rows="4" cols="70"><?php echo htmlspecialchars($currentcontent); ?></textarea>
       </div>
+      <br><br>
       <div class="form-group">
-        <label for="units">Number of Units:</label>
-        <input type="number"  name="units" placeholder="Enter the number of units required">
-      </div>
-      <div class="form-group">
-        <label for="prio">Priority:</label>
-        <select id="priority" name="priority" required>
-          <option value="" disabled selected>Select request priority</option>
-          <option value="1">High</option>
-          <option value="0">Low</option>
-        </select>
-      </div><br><br>
-      <div class="form-group">
-        <input type="submit" value="Submit" name="submit" >
+        <input type="submit" value="Update" name="Update" >
       </div>
     </form>
 <center>

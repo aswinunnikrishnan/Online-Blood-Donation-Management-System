@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2023 at 10:17 AM
+-- Generation Time: Aug 12, 2023 at 01:08 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -40,7 +40,7 @@ CREATE TABLE `admin_info` (
 --
 
 INSERT INTO `admin_info` (`admin_id`, `admin_name`, `admin_username`, `admin_password`, `session_id`) VALUES
-(1, 'test', 'test', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'ug03j7oh6g3gcvcrviei9saqjj');
+(1, 'test', 'test', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'amahbhii9b1kfhce0anlcrq718');
 
 -- --------------------------------------------------------
 
@@ -57,23 +57,6 @@ CREATE TABLE `blood_requests` (
   `request_status` varchar(50) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `blood_requests`
---
-
-INSERT INTO `blood_requests` (`id`, `blood_group`, `units`, `hospital`, `priority`, `request_status`) VALUES
-(7, 'B+', 20, 'testt', 0, 'rejected'),
-(8, 'AB+', 30, 'testt', 0, 'rejected'),
-(21, 'B-', 20, 'testt', 1, 'approved'),
-(22, 'B+', 10, 'idsjd', 1, 'approved'),
-(23, 'B-', 10, 'test', 0, 'approved'),
-(24, 'AB+', 20, 'test', 0, 'rejected'),
-(25, 'AB-', 10, 'test', 0, 'pending'),
-(26, 'O+', 10, 'test', 0, 'approved'),
-(27, 'O-', 10, 'test', 0, 'rejected'),
-(28, 'B+', 5, 'testt', 1, 'approved'),
-(29, 'B-', 100, 'testt', 0, 'rejected');
-
 -- --------------------------------------------------------
 
 --
@@ -85,20 +68,6 @@ CREATE TABLE `blood_units` (
   `blood_group` varchar(10) NOT NULL,
   `units` int(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `blood_units`
---
-
-INSERT INTO `blood_units` (`id`, `blood_group`, `units`) VALUES
-(1, 'A+', 16),
-(2, 'A-', 77),
-(3, 'B+', 15),
-(4, 'B-', 58),
-(5, 'AB+', 9),
-(6, 'AB-', 1),
-(7, 'O+', 46),
-(8, 'O-', 0);
 
 -- --------------------------------------------------------
 
@@ -116,14 +85,6 @@ CREATE TABLE `contact_admin` (
   `query_status` varchar(15) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `contact_admin`
---
-
-INSERT INTO `contact_admin` (`id`, `query_name`, `query_phone`, `query_email`, `query_message`, `date_time`, `query_status`) VALUES
-(10, 'test', 2147483647, 'abcd@gmail.com', 'osdfojdso', '2023-06-29 15:22:31', 'resolved'),
-(12, 'aisjas', 2147483647, 'u2004031@rajagiri.edu.in', 'nil', '2023-07-20 09:53:22', 'resolved');
-
 -- --------------------------------------------------------
 
 --
@@ -139,18 +100,6 @@ CREATE TABLE `contact_us` (
   `query_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `query_status` varchar(11) DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `contact_us`
---
-
-INSERT INTO `contact_us` (`query_id`, `query_name`, `query_number`, `query_mail`, `query_message`, `query_date`, `query_status`) VALUES
-(6, 'test3', '7777777777', 'test@gmail.', 'hello this is a test mesage', '2023-06-08 17:21:39', 'read'),
-(7, 'test3', '7777777777', 'test@gmail.', 'test', '2023-06-08 17:24:21', 'resolved'),
-(10, 'ewoijowejf', '798798333', 'jasfajs@gma', 'aoijdoiasjdoijasoijdoasjodja', '2023-06-12 14:09:00', 'resolved'),
-(11, 'ewoijowejf', '798798333', 'jasfajs@gma', 'aoijdoiasjdoijasoijdoasjodja', '2023-06-12 11:08:48', 'pending'),
-(12, '', 'test@gmail.com', '', 'test message', '2023-06-29 14:37:02', 'pending'),
-(13, 'test', 'test@gmail.com', '54545454545', 'test message\r\n', '2023-07-21 07:18:37', 'pending');
 
 -- --------------------------------------------------------
 
@@ -173,26 +122,6 @@ CREATE TABLE `donors_pending` (
   `status` varchar(20) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `donors_pending`
---
-
-INSERT INTO `donors_pending` (`id`, `name`, `mobile`, `mail_id`, `age`, `gender`, `blood_group`, `address`, `city`, `state`, `date_time`, `status`) VALUES
-(2, 'aaaaa', '6666666666', 'aaa@gmail.com', 45, 'Male', 'B+', 'sdd', 'sds', 'Manipur', '2023-07-20 16:40:14', 'approved'),
-(3, 'sdfo', '6666666666', 'aaa@gmail.com', 20, 'Male', 'A+', 'sdd', 'sds', 'Meghalaya', '2023-07-20 16:40:14', 'rejected'),
-(4, 'aaaaa', '6666666666', 'aaa@gmail.com', 20, 'Male', 'A-', 'sdd', 'sds', 'Meghalaya', '2023-07-20 16:40:14', 'approved'),
-(5, 'aaaaa', '7736480940', 'aaa@gmail.com', 20, 'Male', 'B-', 'sdd', 'sds', 'Manipur', '2023-07-20 16:40:14', 'pending'),
-(6, 'aaaaa', '6666666666', 'aaa@gmail.com', 20, 'Male', 'A-', 'sdd', 'sds', 'Mizoram', '2023-07-20 16:40:36', 'approved'),
-(7, 'aaaaaa', '6666666666', 'aaa@gmail.com', 20, 'Male', 'B+', 'sdd', 'sds', 'Manipur', '2023-07-20 16:42:00', 'approved'),
-(8, 'aaaaaaa', '6666666666', 'aaa@gmail.com', 20, 'Male', 'A+', 'sdd', 'sds', 'Kerala', '2023-07-20 17:48:03', 'approved'),
-(9, 'aaaaaaa', '6666666666', 'aaa@gmail.com', 20, 'Male', 'B+', 'sdd', 'sds', 'Meghalaya', '2023-07-20 17:48:24', 'rejected'),
-(10, 'aaaaaa', '7736480940', 'aaa@gmail.com', 20, 'Male', 'AB+', 'sdd', 'sds', 'Haryana', '2023-07-20 17:50:10', 'approved'),
-(11, 'aaaaaa', '7736480940', 'aaa@gmail.com', 20, 'Male', 'B-', 'sdd', 'sds', 'Mizoram', '2023-07-20 17:50:35', 'rejected'),
-(13, 'aaaaaa', '2147483647', 'aaa@gmail.com', 20, 'Male', 'B+', 'sdd', 'sds', 'Madhya Pradesh', '2023-07-21 05:44:51', 'approved'),
-(14, 'bbbbbb', '6666666666', 'bbb@gmail.com', 20, 'Male', '', 'tk', 'sds', 'Madhya Pradesh', '2023-07-21 06:50:44', 'rejected'),
-(15, 'bbbbbb', '6666666666', 'bbb@gmail.com', 20, 'Male', 'B+', 'tk', 'sds', 'Madhya Pradesh', '2023-07-21 06:52:32', 'rejected'),
-(16, 'aaaaaa', '2147483647', 'aaa@gmail.com', 20, '', '', 'sdd', 'sds', 'Meghalaya', '2023-07-21 07:27:33', 'approved');
-
 -- --------------------------------------------------------
 
 --
@@ -213,26 +142,6 @@ CREATE TABLE `donor_details` (
   `date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `donor_details`
---
-
-INSERT INTO `donor_details` (`id`, `name`, `mobile`, `mail_id`, `age`, `gender`, `blood_group`, `address`, `city`, `state`, `date`) VALUES
-(226, 'testsss', '3333333333', 'test@gmail.com', 23, 'Male', 'B-', 'ww', 'qq', 'Odisha', '2023-07-21'),
-(227, 'aaaaa', '3333333333', 'test@gmail.com', 23, 'Male', 'B-', 'ww', 'qq', 'Odisha', '2023-07-21'),
-(228, 'testsss', '3333333333', 'test@gmail.com', 23, 'Male', 'B-', 'ww', 'qq', 'Odisha', '2023-07-21'),
-(229, 'testsss', '3333333333', 'test@gmail.com', 23, 'Male', 'B-', 'ww', 'qq', 'Odisha', '2023-07-21'),
-(230, 'testsss', '3333333333', 'test@gmail.com', 23, 'Male', 'B-', 'ww', 'qq', 'Odisha', '2023-07-21'),
-(231, 'testsss', '3333333333', 'test@gmail.com', 23, 'Male', 'B-', 'ww', 'qq', 'Odisha', '2023-07-21'),
-(265, 'aaaaaa', '6666666666', 'aaa@gmail.com', 45, 'Male', 'B+', 'sdd', 'sds', 'Manipur', '2023-07-21'),
-(266, 'aaaaaa', '6666666666', 'aaa@gmail.com', 20, 'Male', 'A-', 'sdd', 'sds', 'Mizoram', '2023-07-21'),
-(267, 'aaaaaaa', '6666666666', 'aaa@gmail.com', 20, 'Male', 'A+', 'sdd', 'sds', 'Kerala', '2023-07-21'),
-(268, 'aaaaaa', '7736480940', 'aaa@gmail.com', 20, 'Male', 'AB+', 'sdd', 'sds', 'Haryana', '2023-07-21'),
-(269, 'aaaaaa', '6666666666', 'aaa@gmail.com', 20, 'Male', 'B+', 'sdd', 'sds', 'Manipur', '2023-07-21'),
-(270, 'aaaaa', '6666666666', 'aaa@gmail.com', 20, 'Male', 'A-', 'sdd', 'sds', 'Meghalaya', '2023-07-21'),
-(271, 'aaaaaa', '2147483647', 'aaa@gmail.com', 20, 'Male', 'B+', 'sdd', 'sds', 'Madhya Pradesh', '2023-07-21'),
-(272, 'aaaaaa', '2147483647', 'aaa@gmail.com', 20, '', '', 'sdd', 'sds', 'Meghalaya', '2023-07-21');
-
 -- --------------------------------------------------------
 
 --
@@ -249,14 +158,16 @@ CREATE TABLE `hospitals` (
   `session_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `hospitals`
+-- Table structure for table `news_updates`
 --
 
-INSERT INTO `hospitals` (`id`, `user_name`, `name`, `phone`, `mail_id`, `password`, `session_id`) VALUES
-(34, 'test', 'testt', '4444444444', 'test@gmail.com', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', '74uek0rkr1mj83brbutbqsf9dg'),
-(35, 'ab', 'abcd', '4444444444', 'abcd@gmail.com', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', ''),
-(36, 'cyriiiiac', 'idsjd', '7736480940', 'u2004031@rajagiri.edu.in', 'b79fe7ec4db61f8c4339e6cd5c1d629964aa1cdb5fda73d05d5a3fc0aa69bbdd', 'fismgqh6lh1f0f8aqg0lthkk49');
+CREATE TABLE `news_updates` (
+  `id` int(11) NOT NULL,
+  `content` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -275,14 +186,6 @@ CREATE TABLE `users` (
   `password` varchar(500) NOT NULL,
   `session_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_id`, `name`, `phone`, `mail_id`, `username`, `gender`, `blood_group`, `password`, `session_id`) VALUES
-(4, 'aaaaaa', '2147483647', 'aaa@gmail.com', 'aaa', '', '', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', '74uek0rkr1mj83brbutbqsf9dg'),
-(14, 'bbbbbb', '6666666666', 'bbb@gmail.com', 'bbb', 'Male', 'B+', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', '74uek0rkr1mj83brbutbqsf9dg');
 
 --
 -- Indexes for dumped tables
@@ -339,6 +242,12 @@ ALTER TABLE `hospitals`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `news_updates`
+--
+ALTER TABLE `news_updates`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -358,43 +267,49 @@ ALTER TABLE `admin_info`
 -- AUTO_INCREMENT for table `blood_requests`
 --
 ALTER TABLE `blood_requests`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `contact_admin`
 --
 ALTER TABLE `contact_admin`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `query_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `query_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `donors_pending`
 --
 ALTER TABLE `donors_pending`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `donor_details`
 --
 ALTER TABLE `donor_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=273;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hospitals`
 --
 ALTER TABLE `hospitals`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `news_updates`
+--
+ALTER TABLE `news_updates`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

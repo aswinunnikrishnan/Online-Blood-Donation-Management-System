@@ -43,6 +43,7 @@ if (isset($_POST["login"])) {
 
 <head>
   <title>Users Login/Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <style>
     .bg-image {
@@ -61,7 +62,6 @@ if (isset($_POST["login"])) {
       margin-top: 250px;
       padding-left:800px;
     }
-
     .login-form {
       max-width: 300px;
       padding: 20px;
@@ -104,6 +104,21 @@ if (isset($_POST["login"])) {
       border-color: #21a821;
       box-shadow: 0 0 6px #00ff00;
     }
+    @media (max-width: 767px) {
+    .bg-image{
+      position:fixed;
+      background-position:45% 10%;
+    }
+    .container{
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin-left:auto;
+      margin-right:auto;
+      padding-left:20px;
+      margin-top:250px;
+    }
+  }
   </style>
 </head>
 
@@ -186,6 +201,7 @@ if (isset($_POST["login"])) {
               </div>
               <div>
                 <p id="success" style="color:rgb(14, 201, 55)"></p>
+                <p id="error" style="color:rgb(195, 8, 8)"></p>
             </div>  
             </form>
           </div>
@@ -234,6 +250,7 @@ if (isset($_POST["login"])) {
           emailValidation.classList.add('text-danger');
           emailInput.closest('.form-group').classList.remove('has-success');
           emailInput.closest('.form-group').classList.add('has-error');
+          isValid=0;
         } else {
           emailValidation.innerText = '';
           emailValidation.classList.remove('text-danger');
@@ -243,22 +260,26 @@ if (isset($_POST["login"])) {
           isValid=1;
         }
       } else {
-        emailValidation.innerText = '';
-        emailInput.closest('.form-group').classList.remove('has-error');
+        emailValidation.innerText = "Email can't be empty";
+        emailValidation.classList.remove('text-success');
+        emailValidation.classList.add('text-danger');
+        emailInput.closest('.form-group').classList.add('has-error');
         emailInput.closest('.form-group').classList.remove('has-success');
+        isValid=0;
       }
     });
 
     phoneInput.addEventListener('input', function () {
       var phone = phoneInput.value;
 
-      if (phone.length > 0) {
+      if (phone.length > 0 && phone.length < 11) {
         if (!isValidPhone(phone)) {
           phoneValidation.innerText = 'Invalid phone number';
           phoneValidation.classList.remove('text-success');
           phoneValidation.classList.add('text-danger');
           phoneInput.closest('.form-group').classList.remove('has-success');
           phoneInput.closest('.form-group').classList.add('has-error');
+          isValid=0;
         } else {
           phoneValidation.innerText = '';
           phoneValidation.classList.remove('text-danger');
@@ -269,9 +290,12 @@ if (isset($_POST["login"])) {
 
         }
       } else {
-        phoneValidation.innerText = '';
-        phoneInput.closest('.form-group').classList.remove('has-error');
-        phoneInput.closest('.form-group').classList.remove('has-success');
+          phoneValidation.innerText = 'Phone number cannot be more than 10 digits!';
+          phoneValidation.classList.remove('text-success');
+          phoneValidation.classList.add('text-danger');
+          phoneInput.closest('.form-group').classList.remove('has-success');
+          phoneInput.closest('.form-group').classList.add('has-error');
+          isValid=0;
       }
     });
 
@@ -288,6 +312,7 @@ if (isset($_POST["login"])) {
           passwordInput.closest('.form-group').classList.add('has-error');
           confirmInput.closest('.form-group').classList.remove('has-success');
           confirmInput.closest('.form-group').classList.add('has-error');
+          isValid=0;
         } else {
           passwordValidation.innerText = '';
           passwordValidation.classList.remove('text-danger');
@@ -300,16 +325,36 @@ if (isset($_POST["login"])) {
 
         }
       } else {
-        passwordValidation.innerText = '';
+        passwordValidation.innerText = "Password can't be empty";
         passwordInput.closest('.form-group').classList.remove('has-error');
         passwordInput.closest('.form-group').classList.remove('has-success');
         confirmInput.closest('.form-group').classList.remove('has-error');
         confirmInput.closest('.form-group').classList.remove('has-success');
+        isValid=0;
       }
     });
+    function validateForm() {
+      var email = emailInput.value;
+      var phone = phoneInput.value;
+      var password = passwordInput.value;
+      var confirm = confirmInput.value;
+
+      // Perform all your form validations
+      if (!isValidEmail(email) || !isValidPhone(phone) || password !== confirm) {
+        isValid = 0; // Set isValid to 0 if any validation fails
+      } else {
+        isValid = 1; // Set isValid to 1 if all validations pass
+      }
+    }
 
     function submitForm() {
-        event.preventDefault(); 
+    event.preventDefault(); 
+    validateForm();
+    if (isValid == 0) {
+      document.getElementById('error').innerText = "Errors found please correct them before submitting";
+      document.getElementById('success').innerText = "";
+      return;
+    }
     const form = document.getElementById('register-form');
     const formData = new FormData(form);
     // AJAX request
@@ -325,6 +370,7 @@ if (isset($_POST["login"])) {
           form.reset();
           // Display success message
           document.getElementById('success').innerText = response.message;
+          document.getElementById('error').innerText = "";
           
         } else {
           // Display error message

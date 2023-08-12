@@ -2,10 +2,11 @@
 
 <head>
   <title>Hospital Dashboard</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 
 <style>
 .card {
@@ -22,7 +23,7 @@
   font-size:15px;
 }
 .card-img-top {
-  object-fit: cover;
+  object-fit: contain;
   height: 200px;
   display:block;
   margin-left:auto;
@@ -36,7 +37,27 @@
   position:relative;
   margin-left:210px
 }
-
+#sidebar{
+  position:fixed;
+  margin-top:-20px;
+}
+#content{
+  position:relative;
+  margin-left:210px;
+}
+@media (max-width: 767px) {
+  #sidebar{
+    position:fixed;
+    margin-left:auto;
+    margin-right:auto;
+    z-index:1037;
+  }
+  #content {
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
 .block-anchor {
   color:red;
   cursor: pointer;
@@ -72,62 +93,61 @@ include 'sidebar.php'; ?>
 
   <div class="content-wrapper">
     <div class="container-fluid">
-          <div class="container mt-5">
-          <h1>Status</h1><br><br>
-          <div class="row">
-      <div class="col-md-4">
-        <div class="card">
-          <div class="text-center"><img src="images/req.jpg" class="card-img-top" alt="Image 1"></div>
-          <div class="card-body">
-            <h5 class="card-title"><center><b>Total Requests<b></h5>
-            <div class="stat-panel text-center">
-                    <?php
-                      $sql =" SELECT * from blood_requests WHERE hospital='$name' ";
-                      $result=mysqli_query($connection,$sql) or die("query failed.");
-                      $row=mysqli_num_rows($result);
-
-                    ?>
-                    <div class="stat-panel-number h3"><?php echo $row?></div>
-            </div>        
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img src="images/app.jpg" class="card-img-top" alt="Image 2">
-          <div class="card-body">
-            <h5 class="card-title"><center><b>Approved Requests<b></h5>
-            <div class="stat-panel text-center">
-                    <?php
-                      $sql1 ="SELECT * from blood_requests WHERE hospital='$name' AND request_status='approved'";
-                      $result1=mysqli_query($connection,$sql1) or die("query failed.");
-                      $row1=mysqli_num_rows($result1);
-                    ?>
-                    <div class="stat-panel-number h3 "><?php echo $row1?></div>
+      <div class="container mt-5">
+        <h1>Status</h1><br><br>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <img src="images/req.jpg" class="card-img-top" alt="Image 1">
+              <div class="card-body">
+                <h5 class="card-title"><b>Total Requests</b></h5>
+                <div class="stat-panel text-center">
+                  <?php
+                    $sql = "SELECT * from blood_requests WHERE hospital='$name' ";
+                    $result = mysqli_query($connection, $sql) or die("query failed.");
+                    $row = mysqli_num_rows($result);
+                  ?>
+                  <div class="stat-panel-number h3"><?php echo $row?></div>
+                </div>        
               </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img src="images/pen.jpg" class="card-img-top" alt="Image 3">
-          <div class="card-body">
-            <h5 class="card-title"><center><b>Pending Requests<b></h5>
-            <div class="stat-panel text-center">
-                    <?php
-                      $sql2 ="SELECT * from blood_requests WHERE hospital='$name' AND request_status='pending'";
-                      $result2=mysqli_query($connection,$sql2) or die("query failed.");
-                      $row2=mysqli_num_rows($result2);
-                    ?>
-                    <div class="stat-panel-number h3"><?php echo $row2 ?></div>
+          <div class="col-md-4">
+            <div class="card">
+              <img src="images/app.jpg" class="card-img-top" alt="Image 2">
+              <div class="card-body">
+                <h5 class="card-title"><b>Approved Requests</b></h5>
+                <div class="stat-panel text-center">
+                  <?php
+                    $sql1 = "SELECT * from blood_requests WHERE hospital='$name' AND request_status='approved'";
+                    $result1 = mysqli_query($connection, $sql1) or die("query failed.");
+                    $row1 = mysqli_num_rows($result1);
+                  ?>
+                  <div class="stat-panel-number h3 "><?php echo $row1?></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img src="images/pen.jpg" class="card-img-top" alt="Image 3">
+              <div class="card-body">
+                <h5 class="card-title"><b>Pending Requests</b></h5>
+                <div class="stat-panel text-center">
+                  <?php
+                    $sql2 = "SELECT * from blood_requests WHERE hospital='$name' AND request_status='pending'";
+                    $result2 = mysqli_query($connection, $sql2) or die("query failed.");
+                    $row2 = mysqli_num_rows($result2);
+                  ?>
+                  <div class="stat-panel-number h3"><?php echo $row2 ?></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
   </div>
-
     
   <?php
  } else {

@@ -2,10 +2,11 @@
 
 <head>
   <title>Blood Bank Status</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 
 <style>
 .card {
@@ -22,8 +23,8 @@
   font-size:15px;
 }
 .card-img-top {
-  object-fit: cover;
-  height: 100px;
+  object-fit:contain;
+  height: 200px;
   display:block;
   margin-left:auto;
   margin-right:auto;
@@ -31,11 +32,24 @@
 
 #sidebar{
   position:fixed;
-  margin-top:-20px
+  margin-top:-20px;
 }
 #content{
   position:relative;
-  margin-left:210px
+  margin-left:210px;
+}
+@media (max-width: 767px) {
+  #sidebar{
+    position:fixed;
+    margin-left:auto;
+    margin-right:auto;
+    z-index:1037;
+  }
+  #content {
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+  }
 }
 
 .block-anchor {
@@ -64,152 +78,149 @@ include 'sidebar.php'; ?>
 
 </div>
 <div id="content">
-
-  <div class="content-wrapper">
-    <div class="container-fluid">
-          <div class="container mt-5">
+    <div class="content-wrapper">
+      <div class="container-fluid">
+        <div class="container mt-5">
           <h1>Blood Bank Status</h1><br><br>
           <div class="row">
-      <div class="col-md-3">
-        <div class="card">
-        <img src="./admin_image/Apos.png" class="card-img-top" >
-          <div class="card-body">
-            <div class="stat-panel text-center">
+            <div class="col">
+              <div class="card">
+                <img src="./admin_image/Apos.png" class="card-img-top" >
+                <div class="card-body">
+                  <div class="stat-panel text-center">
                     <?php
-                      $sql ="SELECT * from blood_units WHERE blood_group='A+'";
-                      $result=mysqli_query($connection,$sql) or die("query failed.");
-                      $row=mysqli_fetch_assoc($result);
-                      $units = $row['units'];
-
+                    $sql ="SELECT * from blood_units WHERE blood_group='A+'";
+                    $result=mysqli_query($connection,$sql) or die("query failed.");
+                    $row=mysqli_fetch_assoc($result);
+                    $units = $row['units'];
                     ?>
                     <div class="stat-panel-number h3"><?php echo $units?></div>
-            </div>        
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card">
-        <img src="./admin_image/aneg.png" class="card-img-top" >
-            <div class="card-body">
-            <div class="stat-panel text-center">
+                  </div>        
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="./admin_image/aneg.png" class="card-img-top" >
+                <div class="card-body">
+                  <div class="stat-panel text-center">
                     <?php
-                      $sql1 ="SELECT * from blood_units WHERE blood_group='A-'";
-                      $result1=mysqli_query($connection,$sql1) or die("query failed.");
-                      $row1=mysqli_fetch_assoc($result1);
-                      $units1 = $row1['units'];
+                    $sql1 ="SELECT * from blood_units WHERE blood_group='A-'";
+                    $result1=mysqli_query($connection,$sql1) or die("query failed.");
+                    $row1=mysqli_fetch_assoc($result1);
+                    $units1 = $row1['units'];
                     ?>
                     <div class="stat-panel-number h3"><?php echo $units1?></div>
+                  </div>
+                </div>
               </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card">
-        <img src="./admin_image/bpos.png" class="card-img-top" >
-            <div class="card-body">
-                    <div class="stat-panel text-center">
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="./admin_image/bpos.png" class="card-img-top" >
+                <div class="card-body">
+                  <div class="stat-panel text-center">
                     <?php
-                      $sql2 ="SELECT * from blood_units WHERE blood_group='B+'";
-                      $result2=mysqli_query($connection,$sql2) or die("query failed.");
-                      $row2=mysqli_fetch_assoc($result2);
-                      $units2 = $row2['units'];
+                    $sql2 ="SELECT * from blood_units WHERE blood_group='B+'";
+                    $result2=mysqli_query($connection,$sql2) or die("query failed.");
+                    $row2=mysqli_fetch_assoc($result2);
+                    $units2 = $row2['units'];
                     ?>
                     <div class="stat-panel-number h3"><?php echo $units2?></div>
+                  </div>
+                </div>
               </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card">
-        <img src="./admin_image/bneg.png" class="card-img-top" >
-            <div class="card-body">
-            <div class="stat-panel text-center">
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="./admin_image/bneg.png" class="card-img-top" >
+                <div class="card-body">
+                  <div class="stat-panel text-center">
                     <?php
-                      $sql3 ="SELECT * from blood_units WHERE blood_group='B-'";
-                      $result3=mysqli_query($connection,$sql3) or die("query failed.");
-                      $row3=mysqli_fetch_assoc($result3);
-                      $units3 = $row3['units'];
+                    $sql3 ="SELECT * from blood_units WHERE blood_group='B-'";
+                    $result3=mysqli_query($connection,$sql3) or die("query failed.");
+                    $row3=mysqli_fetch_assoc($result3);
+                    $units3 = $row3['units'];
                     ?>
                     <div class="stat-panel-number h3"><?php echo $units3?></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <br><br><br><br>
-      <div class="row">
-      <div class="col-md-3">
-        <div class="card">
-        <img src="./admin_image/abpos.png" class="card-img-top" >
-          <div class="card-body">
-            <div class="stat-panel text-center">
+          <br><br><br><br>
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <img src="./admin_image/abpos.png" class="card-img-top" >
+                <div class="card-body">
+                  <div class="stat-panel text-center">
                     <?php
-                      $sql4 ="SELECT * from blood_units WHERE blood_group='AB+'";
-                      $result4=mysqli_query($connection,$sql4) or die("query failed.");
-                      $row4=mysqli_fetch_assoc($result4);
-                      $units4 = $row4['units'];
-
+                    $sql4 ="SELECT * from blood_units WHERE blood_group='AB+'";
+                    $result4=mysqli_query($connection,$sql4) or die("query failed.");
+                    $row4=mysqli_fetch_assoc($result4);
+                    $units4 = $row4['units'];
                     ?>
                     <div class="stat-panel-number h3"><?php echo $units4?></div>
-            </div>        
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card">
-        <img src="./admin_image/abneg.png" class="card-img-top" >
-            <div class="card-body">
-            <div class="stat-panel text-center">
+                  </div>        
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="./admin_image/abneg.png" class="card-img-top" >
+                <div class="card-body">
+                  <div class="stat-panel text-center">
                     <?php
-                      $sql5 ="SELECT * from blood_units WHERE blood_group='AB-'";
-                      $result5=mysqli_query($connection,$sql5) or die("query failed.");
-                      $row5=mysqli_fetch_assoc($result5);
-                      $units5 = $row5['units'];
-
+                    $sql5 ="SELECT * from blood_units WHERE blood_group='AB-'";
+                    $result5=mysqli_query($connection,$sql5) or die("query failed.");
+                    $row5=mysqli_fetch_assoc($result5);
+                    $units5 = $row5['units'];
                     ?>
                     <div class="stat-panel-number h3"><?php echo $units5?></div>
+                  </div>
+                </div>
               </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card">
-        <img src="./admin_image/opos.png" class="card-img-top" >
-            <div class="card-body">
-            <div class="stat-panel text-center">
-                     <?php
-                      $sql6 ="SELECT * from blood_units WHERE blood_group='O+'";
-                      $result6=mysqli_query($connection,$sql6) or die("query failed.");
-                      $row6=mysqli_fetch_assoc($result6);
-                      $units6 = $row6['units'];
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="./admin_image/opos.png" class="card-img-top" >
+                <div class="card-body">
+                  <div class="stat-panel text-center">
+                    <?php
+                    $sql6 ="SELECT * from blood_units WHERE blood_group='O+'";
+                    $result6=mysqli_query($connection,$sql6) or die("query failed.");
+                    $row6=mysqli_fetch_assoc($result6);
+                    $units6 = $row6['units'];
                     ?>
                     <div class="stat-panel-number h3"><?php echo $units6?></div>
+                  </div>
+                </div>
               </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card">
-        <img src="./admin_image/oneg.png" class="card-img-top" >
-            <div class="card-body">
-            <div class="stat-panel text-center">
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="./admin_image/oneg.png" class="card-img-top" >
+                <div class="card-body">
+                  <div class="stat-panel text-center">
                     <?php
-                      $sql7 ="SELECT * from blood_units WHERE blood_group='O-'";
-                      $result7=mysqli_query($connection,$sql7) or die("query failed.");
-                      $row7=mysqli_fetch_assoc($result7);
-                      $units7 = $row7['units'];
+                    $sql7 ="SELECT * from blood_units WHERE blood_group='O-'";
+                    $result7=mysqli_query($connection,$sql7) or die("query failed.");
+                    $row7=mysqli_fetch_assoc($result7);
+                    $units7 = $row7['units'];
                     ?>
                     <div class="stat-panel-number h3"><?php echo $units7?></div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+          <div>
           </div>
         </div>
       </div>
     </div>
-    <div>
-    </div>
   </div>
-
-    
   <?php
  } else {
      echo '<div class="alert alert-danger"><b> Please Login First To Access Admin Portal.</b></div>';

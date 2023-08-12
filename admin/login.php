@@ -43,8 +43,10 @@ if (isset($_POST["login"])) {
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Login</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <style>
     .bg-image {
       background-image: url("./admin_image/backgrn.png");
@@ -56,13 +58,21 @@ if (isset($_POST["login"])) {
       width: 100%;
       height: 100%;
       z-index: -1;
-      filter: blur(2px);
     }
 
     .container {
       margin-top: 250px;
     }
-
+    @media (max-width: 767px) {
+    .bg-image{
+      background-size:100% 100%;
+    }
+    .container {
+      position:relative;
+      margin-left:auto;
+      margin-right:auto;
+    }
+  }
     .login-form {
       max-width: 300px;
       padding: 20px;

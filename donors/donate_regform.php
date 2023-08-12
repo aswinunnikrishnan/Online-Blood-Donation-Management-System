@@ -1,16 +1,17 @@
 <html>
 <head>
   <title>Donate Blood</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 <style>
-    #sidebar{
+ #sidebar{
   position:fixed;
   margin-top:-20px;
 }
-#content{
-  position:relative;
-  margin-left:210px;
-}
+
 .form-container {
       background-color: #fff;
       border-radius: 10px;
@@ -106,6 +107,29 @@
       text-align:left;
       justify-content: center;
     }
+    @media (max-width: 767px) {
+  #sidebar{
+    position:fixed;
+    margin-left:auto;
+    margin-right:auto;
+    z-index:1037;
+  }
+  .form-container {
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+    padding: auto;
+    width: auto;
+  }
+  .overlay-container{
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    padding: auto;
+    width: 100%;
+    height: auto;
+  }
+}
 
     .disclaimer {
       background-color: #fff;
@@ -149,6 +173,8 @@
     .disclaimer button:focus {
       outline: none;
     }
+ 
+
 </style>
 </head>
 <body>
@@ -302,7 +328,7 @@ include 'connection.php';
     </div>
   </div>
   
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
     const nameinput = document.getElementById('name');
