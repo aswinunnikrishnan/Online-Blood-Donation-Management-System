@@ -86,5 +86,10 @@ cd Online-Blood-Donation-Management-System
 
 
 ## MIT License
+     
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/blob/e4d2f402f6368f381eae7487ccc8a65b2c078fbe/LICENSE)
 
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+This project is licensed under the MIT License.  
+
+
