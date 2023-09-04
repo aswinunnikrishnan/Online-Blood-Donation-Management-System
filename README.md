@@ -28,7 +28,6 @@ The Blood Donation Management System is a web-based application developed using 
 ## Sample screenshots
 
 ![out (5)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/0139e34c-694f-4b4d-b1be-8eaf78943dee)
-![out (6)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/40a25d0f-6b1c-46a2-970c-f5dc78723090)
 ![out (10)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/57b001a0-c41b-4fcd-b8f8-ba9afa26781a)
 ![out (11)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/04eef227-cc56-467b-8570-6bb718976262)
 ![out (15)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/ff07ecfa-fb02-458a-8086-609edf65b76a)
