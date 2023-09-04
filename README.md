@@ -28,40 +28,41 @@ The Blood Donation Management System is a web-based application developed using 
 ## Sample screenshots
 
 ### Home Page
-![out (5)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/0139e34c-694f-4b4d-b1be-8eaf78943dee)
+![out (5)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/484ad81f-2d80-441c-9132-7ded5460c7b1)
 ### Admin Login Page 
-![out (10)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/57b001a0-c41b-4fcd-b8f8-ba9afa26781a)
+![out (10)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/68f0268d-f9ee-49f9-98bf-d8b897b9db49)
 ### Admin Dashboard
-![out (11)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/04eef227-cc56-467b-8570-6bb718976262)
+![out (11)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/27fefa34-8267-4bb7-ae25-0cf2a5b1a2b4)
 ### Hospital Blood Requests 
-![out (15)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/ff07ecfa-fb02-458a-8086-609edf65b76a)
+![out (15)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/17bf1541-9fab-422a-94a6-0a6bbb8c3c14)
 ### User Queries
-![out (14)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/62239100-f161-4307-9935-7c9ba6f86dd2)
+![out (14)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/c7d0f0ec-a987-44ac-97d7-45e5d34624d2)
 ### Approved/Final Donors
-![out (13)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/75f6bcd6-5660-49dd-a522-3bbb198c705e)
+![out (13)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/ef42c73f-0608-4851-b3f8-f9bde0083381)
 ### Hospital Queries
-![out (17)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/ce54ef2f-ff6a-4f87-8b14-943273f4eb0e)
+![out (17)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/105f865a-bda2-4866-b278-d6984af85a47)
 ### Blood Bank Status
-![out (16)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/590689a5-1272-4245-9aec-5e43c0079baf)
+![out (16)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/60c2288c-e9ed-473c-9bcc-5368e6efdce4)
 
 
 ### User Login/Register Page
-![Screenshot 2023-07-21 214936](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/0e0ce2d2-93da-4ec2-9cbb-99fba256d230)
+![Screenshot 2023-07-21 214936](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/5825c3ed-5430-4cb8-9112-514646c20aba)
 ### User Dashboard
-![out (22)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/8a9a6b00-d3b7-4392-b0d6-9858303149d5)
+![out (22)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/06e4c89e-4b35-4710-8f4c-0c8d3c86a5d7)
 ### User Donation form
-![out (2)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/77a9d777-b8de-4328-b331-0582da0744f9)
+![out (2)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/ed363d6d-f953-4d99-9c47-4eca81ddd983)
 ### User Donation Status & e-certificate download
-![out (3)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/222ce99c-8b9a-4727-b12e-03c8d37690af)
+![out (3)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/b7a21771-4690-4af8-81f9-df544dde7067)
 
 
 
 ### Hospital Login/Register Page
-![out (7)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/85e739d2-92d1-41c8-94f5-f915029c01a0)
+![out (7)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/14960228-e191-4b45-b1ab-f6a6f07b5beb)
 ### Hospital Dashboard
-![out (18)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/32b80ea7-c494-4979-9c14-482f1891e2a0)
+![out (18)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/9ae43e05-674b-4c6a-ab89-8f9eef00533a)
 ### Hospital Blood request status
-![out (20)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/2a51106c-3197-46bd-82f7-0a90eb2f3039)
+![out (20)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/5b80696a-8b62-4f57-9e30-459b26d75f8f)
+
 
 
 
