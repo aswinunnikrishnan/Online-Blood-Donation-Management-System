@@ -47,7 +47,7 @@ $pdf->Cell(0, 0, $date, 0, 1, 'L');
 $filename = $_GET['name'] . '_' . $_GET['id'] . '.pdf';
 
 // Save the certificate file on the server
-$pdf->Output($_SERVER['DOCUMENT_ROOT'] . '/admin/certificates/' . $filename, 'F');
+$pdf->Output('../admin/certificates/' . $filename, 'F');
 header("Location: donorpend.php");
 exit;
 
