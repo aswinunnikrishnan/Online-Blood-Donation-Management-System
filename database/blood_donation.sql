@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2023 at 01:08 PM
+-- Generation Time: Sep 04, 2023 at 08:08 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -40,7 +40,7 @@ CREATE TABLE `admin_info` (
 --
 
 INSERT INTO `admin_info` (`admin_id`, `admin_name`, `admin_username`, `admin_password`, `session_id`) VALUES
-(1, 'test', 'test', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'amahbhii9b1kfhce0anlcrq718');
+(1, 'admin', 'admin', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'clgok4i1on6knukggrt44jdni3');
 
 -- --------------------------------------------------------
 
@@ -168,6 +168,13 @@ CREATE TABLE `news_updates` (
   `id` int(11) NOT NULL,
   `content` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `news_updates`
+--
+
+INSERT INTO `news_updates` (`id`, `content`) VALUES
+(1, 'Blood donation campaigns coming soon !!');
 
 -- --------------------------------------------------------
 
@@ -303,7 +310,7 @@ ALTER TABLE `hospitals`
 -- AUTO_INCREMENT for table `news_updates`
 --
 ALTER TABLE `news_updates`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
