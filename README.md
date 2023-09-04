@@ -27,30 +27,44 @@ The Blood Donation Management System is a web-based application developed using 
 
 ## Sample screenshots
 
+### Home Page
 ![out (5)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/0139e34c-694f-4b4d-b1be-8eaf78943dee)
+### Admin Login Page 
 ![out (10)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/57b001a0-c41b-4fcd-b8f8-ba9afa26781a)
+### Admin Dashboard
 ![out (11)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/04eef227-cc56-467b-8570-6bb718976262)
+### Hospital Blood Requests 
 ![out (15)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/ff07ecfa-fb02-458a-8086-609edf65b76a)
+### User Queries
 ![out (14)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/62239100-f161-4307-9935-7c9ba6f86dd2)
+### Approved/Final Donors
 ![out (13)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/75f6bcd6-5660-49dd-a522-3bbb198c705e)
+### Hospital Queries
 ![out (17)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/ce54ef2f-ff6a-4f87-8b14-943273f4eb0e)
+### Blood Bank Status
 ![out (16)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/590689a5-1272-4245-9aec-5e43c0079baf)
 
+
+### User Login/Register Page
 ![Screenshot 2023-07-21 214936](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/0e0ce2d2-93da-4ec2-9cbb-99fba256d230)
+### User Dashboard
 ![out (22)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/8a9a6b00-d3b7-4392-b0d6-9858303149d5)
+### User Donation form
 ![out (2)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/77a9d777-b8de-4328-b331-0582da0744f9)
+### User Donation Status & e-certificate download
+![out (3)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/222ce99c-8b9a-4727-b12e-03c8d37690af)
 
 
+
+### Hospital Login/Register Page
 ![out (7)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/85e739d2-92d1-41c8-94f5-f915029c01a0)
-![out (20)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/2a51106c-3197-46bd-82f7-0a90eb2f3039)
+### Hospital Dashboard
 ![out (18)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/32b80ea7-c494-4979-9c14-482f1891e2a0)
+### Hospital Blood request status
+![out (20)](https://github.com/aswinunnikrishnan/Online-Blood-Donation-Management-System/assets/76864166/2a51106c-3197-46bd-82f7-0a90eb2f3039)
 
 
 
-
-
-
-  
 ## Installation
 
 1. Download and install [XAMPP](https://www.apachefriends.org/index.html), if you haven't already.
